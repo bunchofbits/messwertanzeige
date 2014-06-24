@@ -1,0 +1,221 @@
+
+messwertanzeige.c,3012
+#define _GNU_SOURCE1,0
+#define BUFSIZE 33,573
+#define COLOR_GRID 35,594
+#define COLOR_POINTER_MASK 36,654
+#define COLOR_1_SEC 37,708
+#define COLOR_10_SEC 38,768
+#define COLOR_30_SEC 39,826
+#define COLOR_60_SEC 40,884
+#define COLOR_GLAETTUNG 41,942
+static int pointerColors[pointerColors46,1101
+struct drawStruct{drawStruct80,1826
+  void (*backgroundFillFunc)backgroundFillFunc81,1845
+  GC gc;82,1881
+  XGCValues gcv;83,1913
+  int tiefe;84,1946
+  Pixmap backMap;85,1977
+  Pixmap foreMap;86,2021
+  int l_bord;87,2065
+  int r_bord;88,2099
+  int top_bord;89,2134
+  int bot_bord;90,2169
+  int vert_lines;91,2207
+  int hor_lines;92,2249
+  Widget draw;93,2292
+  Dimension sizeX;94,2310
+  Dimension sizeY;95,2329
+  Display *dpy;dpy96,2348
+struct global{global99,2368
+  int verbose;100,2383
+  int print_help;101,2419
+  int is_test;103,2471
+  int sondTyp;104,2514
+  int use_stdin;105,2547
+  int time_base;106,2564
+  char *exponent_alpha;exponent_alpha107,2581
+  char *port;port108,2605
+  int graph1;109,2619
+  int graph2;110,2633
+  int graph3;111,2647
+  int graph4;112,2661
+  int graph5;113,2675
+  int no_table;115,2692
+  int no_analog;116,2708
+  int no_timeline;117,2725
+  double max_value;119,2745
+  GC gc_pointer;121,2768
+  int win_sizeX;123,2809
+  int win_sizeY;124,2843
+  struct drawStruct draw_point;126,2878
+  struct drawStruct draw_avg;127,2910
+  struct drawStruct draw_sens;128,2940
+  double val1[val1130,2972
+  double val2[val2131,3014
+  double val3[val3132,3064
+  double val6[val6133,3120
+  double avg_exp[avg_exp134,3176
+  Widget sens_lout;135,3230
+  int drawPointTo[drawPointTo137,3287
+  int pointer_radius;138,3372
+  double pointer_winkel_ziel_exp;139,3426
+  double pointer_winkel_ziel;140,3498
+} glob;141,3574
+static XrmOptionDescRec options[options143,3583
+#define Offset(163,4787
+static XtResource my_resources[my_resources164,4844
+#undef Offset213,6363
+char *fallback[fallback215,6378
+void drawRotatedString(269,8076
+#define RotateX(343,10661
+#define RotateY(344,10725
+void set_res(370,11809
+Widget getWidgetByName(378,11970
+void printWidget(384,12065
+double calc_uSv(399,12295
+void expose_cb(436,13191
+void resize_cb(445,13466
+int getSondTyp(472,14179
+void drawPointer(508,14723
+void setExpPointer_tm(534,15549
+double average(576,16886
+double calc_exp_avg(597,17506
+void draw_graph_on_pixmap(610,17874
+void draw_averages(653,19038
+void draw_analog(681,19997
+void updateImages(687,20126
+void updateSensors_gs08(731,21260
+void updateSensors_gs07(751,21829
+void update_ev(806,23557
+void draw_legend(890,25709
+void fillPointerBackground(977,28197
+void fillAverageBackground(1061,31364
+void fillDrawStruct(1212,36360
+Widget createFrame_withText(1248,37654
+Widget createSensWidget(1271,38139
+void initGUI(1414,43886
+int runSonde(1543,47651
+void exit_cb(1666,50456
+void cleanup(1672,50544
+void sigchld_hdl 1680,50650
+void sigalrm_hdl(1695,51038
+void print_help(1703,51218
+int main(1735,53112
+
+sonde_sim.c,252
+struct opt9,135
+  int sondVers;11,148
+  int sleepTime;12,164
+void printHelp(16,192
+void parseopt(29,656
+int generateND(64,1132
+double generateTemperature(81,1344
+double generateFeuchte(129,2463
+double generateDruck(150,3043
+int main(170,3614
+
+sonde/output.c,182
+#define _GNU_SOURCE1,0
+static char *RCSID RCSID9,118
+static char * decode_char(11,219
+static char *decode_T(decode_T74,1347
+static int decode_esc(99,1624
+int format(120,2010
+
+sonde/parse.c,690
+#define _GNU_SOURCE2,31
+static char *RCSID RCSID10,168
+struct  funktion 12,268
+  char *pattern;pattern13,288
+  int (*function)function14,305
+static double do_sign(19,333
+static int parse_hex(32,508
+static int temp_funktion(65,976
+static int temp_funktion(82,1261
+static int achse_funktion(102,1596
+static int druck_funktion(120,1962
+static int feuchte_funktion(131,2207
+static int niederd_funktion(144,2458
+static int hochd_funktion(153,2650
+static int echo_funktion(161,2839
+static int koinz_funktion(169,3029
+static int spannung_funktion(177,3221
+static struct funktion fktab[fktab189,3423
+#define MAXFKTAB 208,3820
+static void handle(211,3870
+int parse(246,4500
+
+sonde/sonde.c,767
+#define _GNU_SOURCE4,40
+#define BUFSIZE 17,277
+static char *RCSID RCSID19,301
+int verbose;27,601
+  VERBOSE 30,623
+  GENITRON=31,638
+struct conf 34,655
+  int file;35,669
+  char *device;device36,681
+  int option;37,697
+  int wait;38,711
+  char *outfmt;outfmt39,723
+  int version;40,739
+  int speed;41,754
+static void _set_clr_rts(44,771
+static void set_rts(59,1111
+static void clr_rts(66,1175
+void xtcgetattr(78,1307
+static void xtcsetattr(87,1489
+static int find_baud(96,1697
+static int port_setup(138,2400
+void usage(170,3058
+void parseopt(199,4252
+static ssize_t safe_read(269,5192
+static ssize_t full_read(286,5547
+static int read_version(313,6020
+int read_data(383,7184
+int read_file(468,8791
+int xread(522,9777
+int main(578,10643
+
+sonde/sonde.h,312
+#define _SONDE_H_ 2,18
+struct raw_data 4,91
+	unsigned int hd;5,109
+	unsigned int nd;6,127
+	unsigned int echo;7,145
+	unsigned int koinz;8,165
+	unsigned int spannung;9,186
+        double temp[temp10,210
+	double druck;11,234
+	double feuchte;12,249
+  	double x;13,266
+	double y;14,279
+	double z;15,290
+
+sonde/sonde_old.c,630
+#define _GNU_SOURCE4,40
+static char *RCSID RCSID17,277
+int verbose;25,577
+  VERBOSE 28,599
+  GENITRON=29,614
+struct conf 32,631
+  char *device;device33,645
+  int option;34,661
+  int wait;35,675
+  char *outfmt;outfmt36,687
+  int version;37,703
+  int speed;38,718
+static void _set_clr_rts(41,735
+static void set_rts(56,1075
+static void clr_rts(63,1139
+void xtcgetattr(75,1271
+static void xtcsetattr(84,1453
+static int find_baud(93,1661
+static void port_setup(134,2331
+void usage(162,2949
+void parseopt(191,4143
+static int read_version(258,5000
+int read_data(330,6326
+int xread(410,7688
+int main(466,8545
