@@ -1,6 +1,6 @@
 CC=gcc
-CFLAGS= -Wall -g
-LOADLIBES= -lXm -lm
+FLAGS= -Wall -g
+LOADLIBES= -lXm -lXt -lX11 -lm
 
 all: messwertanzeige sonde_sim sonde
 

@@ -980,7 +980,7 @@ void fillPointerBackground()
   int x1,x2,y1,y2;		   /* Punkte fuer Striche */
   int x = glob.draw_point.sizeX/2; /* Mittelpunkt X */
   int y = glob.draw_point.sizeY;   /* Mittelpunkt Y*/
-  
+  int rot;			   /* Rotation */
   int anz_strich = 9;		/* Anzahl Unterteilstriche */
   char *val;
   int cnt = 0;
@@ -1035,7 +1035,6 @@ void fillPointerBackground()
       /* Zielposition Beschriftung */
       x2 = x2- (strlen(val)*2 );
       y2 = y2 + 5;
-
       rot = 90-((anz_strich/180)*cnt);
       drawRotatedString(glob.draw_point.dpy, glob.draw_point.gc, glob.draw_point.backMap,
   			x2, y2, /* x: ein Zeichen ~4 Pixel -> haelfte; y: 5px unterhalb*/
