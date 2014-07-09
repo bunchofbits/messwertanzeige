@@ -34,11 +34,11 @@ static int parse_hex(char *test, double *val)
   //	int v1,v2,v3;
   int ret;
   unsigned int vor,nach;
-  int e1,e2;
+  /* int e1,e2; */
   char e[2];
 
-  e2=0;
-  e1=0;
+  /* e2=0; */
+  /* e1=0; */
   ret=sscanf(test,"%[+-]%x%[+-]%x",&e[0],&vor,&e[1],&nach);
 
   switch(ret) {

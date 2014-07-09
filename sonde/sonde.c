@@ -317,8 +317,8 @@ static int read_version(int fd, int output)
   char *version;
   fd_set rfds;
   int ret;
-  int toRead;
-  int cnt;
+  /* int toRead; */
+  /* int cnt; */
 
   FD_ZERO(&rfds);
   FD_SET(fd,&rfds);
@@ -364,11 +364,11 @@ static int read_version(int fd, int output)
   
   /* read 21 bytes */
 
-  ret = 0;
-  cnt = 0;
-  toRead = 21;
+  /* ret = 0; */
+  /* cnt = 0; */
+  /* toRead = 21; */
   
-  ret = full_read(fd, buf, 21);
+  /* ret =  */full_read(fd, buf, 21);
   
   //  ret = read(fd,buf,21);
 
